@@ -60,7 +60,7 @@ lane_stop_idxs=[0,0,0,0]
 lane_stop_widths=[0,0,0,0]
 generated_data= []
 predicted_data=[]
-cur_gen_idx=35
+cur_gen_idx=1
 cur_cycle_time=27
 vehicle_gen_rate=[0,0,0,0]
 vehicle_to_be_generated_at=[0,0,0,0]
@@ -78,7 +78,7 @@ iter_vehicle_delay=0
 iter_vehicle_cnt=0
 total_vehicle_delay=0
 total_vehicle_cnt=0
-file_name='fixed_signal_analysis3.csv'
+file_name='optimized_signal_analysis3.csv'
 
 
 
@@ -511,7 +511,7 @@ def generate_vehicles():
         # print("f",vehicle_gen_rate)
         for i in range(4):
             vehicle_to_be_generated_at[i]=sim_time + (300/vehicle_gen_rate[i])
-        # print("vehicles ",vehicles_generated)
+        print("vehicles ",vehicles_generated)
         vehicles_generated =[0,0,0,0]
     # if cycle_completed and iteration>0:
     #     cycle_completed=False
@@ -669,9 +669,6 @@ def fixed_signaling():
                 # f.write('\n')
                 write= csv.writer(f)
                 write.writerows([[sim_time,iteration,(iter_vehicle_delay)/10,(total_vehicle_delay)/10,iter_vehicle_cnt,(iter_vehicle_delay/iter_vehicle_cnt)/10,(total_vehicle_delay/total_vehicle_cnt)/10]])
-            print("Fixed Signaling")
-            print("Average delay: ", (total_vehicle_delay/total_vehicle_cnt)/10)
-            
             iter_vehicle_delay=0
             iter_vehicle_cnt=0
         sim_time = sim_time+1
@@ -803,8 +800,6 @@ def optimizationAlgoSignalling():
                 write= csv.writer(f)
                 write.writerows([[sim_time,iteration,(iter_vehicle_delay)/10,(total_vehicle_delay)/10,iter_vehicle_cnt,(iter_vehicle_delay/iter_vehicle_cnt)/10,(total_vehicle_delay/total_vehicle_cnt)/10]])
             # print([sim_time,iteration,(iter_vehicle_delay)/10,(total_vehicle_delay)/10,iter_vehicle_cnt,(iter_vehicle_delay/iter_vehicle_cnt)/10,(total_vehicle_delay/total_vehicle_cnt)/10])
-            print("Optimized Signaling")
-            print("Average delay: ", (total_vehicle_delay/total_vehicle_cnt)/10)
             iter_vehicle_delay=0
             iter_vehicle_cnt=0
         sim_time = sim_time+1

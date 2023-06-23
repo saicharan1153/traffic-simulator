@@ -11,9 +11,9 @@ import pickle
 import matplotlib.dates as mdates
 from datetime import datetime
 import time
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-from tensorflow.keras.optimizers import Adam
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense
+# from tensorflow.keras.optimizers import Adam
 # import pickle
 # import matplotlib.dates as mdates
 # from datetime import datetime
@@ -167,3 +167,32 @@ def split_sequence(sequence, n_steps):
 # csv_filename='generated_traffic_dataset_1day.csv'
 # df.to_csv(csv_filename, index=False)
 
+# def generate_and_predict():
+#     global generated_data
+#     global predicted_data
+#     generated_data= []
+#     generated_data.append(['Time Instants'])
+#     generated_data.append(['Lane 1'])
+#     generated_data.append(['Lane 2'])
+#     generated_data.append(['Lane 3'])
+#     generated_data.append(['Lane 4'])
+#     generated_data=Gpd.generate_all_data(generated_data)
+#     splited=[[],[],[],[]]
+#     y=[[],[],[],[]]
+#     predicted_complete=[]
+
+#     for i in range(4):
+#         splited[i],y[i]=Gpd.split_sequence(generated_data[i][1:],12)
+#         predicted=[]
+#         filename = 'pickle_files/model_lane'+str(i+1)+'.sav'
+#         loaded_model = pickle.load(open(filename, 'rb'))
+#         for j in splited[i]:
+#             predicted.append(Gpd.predict_data(loaded_model,j))
+#         predicted_complete.append(predicted)
+#     for l in range(1,len(predicted_complete)):
+#         for j in range(len(predicted_complete[l])):
+#             predicted_complete[l][j]=predicted_complete[l][j][0]
+#     print("generated_data_for a day ")
+#     print(generated_data)
+#     print("predicted data")
+#     print(predicted_complete)
